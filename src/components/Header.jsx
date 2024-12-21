@@ -1,40 +1,43 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { Search, User, ShoppingCart } from 'lucide-react';
 
 function Header() {
-
+    const filtrarPorCategoria = (categoria) => {
+        console.log(`Filtrando por categoría: ${categoria}`);
+      };
     return (
-      <header>
-        <nav class="nav-principal">
-            <a to="/">Inicio</a>
-            <a to="/">Productos</a>
-        </nav>
+        <header>
+            <nav className="nav-principal">
+                <a to="/">Inicio</a>
+                <a to="/">Productos</a>
+            </nav>
 
-        <nav class="nav-secundario">
-            <a href="/">PetShop</a>
+            <nav className="nav-secundario">
+                <a className='logo' href="/">PetShop</a>
 
-            <form onsubmit="">
-                <input placeholder="Buscar" id="textoIngresado" />
-                <button type="submit"><i class="bi bi-search"></i></button>
-            </form>
+                <form onsubmit="">
+                    <input placeholder="Buscar" id="textoIngresado" />
+                    <button type="submit"><Search className="search-icon" /></button>
+                </form>
 
-            <div class="nav-secundario__iconos">
-                <a href="/iniciar-sesion" className="link-unstyled">
-                    <i class="bi bi-person"></i>
-                </a>
-                <a href="/carrito" className="link-unstyled">
-                    <i class="bi bi-cart3"></i>
-                </a>
-            </div>
-        </nav>
+                <div className="nav-secundario__iconos">
+                    <Link to="/login" className="link-unstyled">
+                        <User />
+                    </Link>
+                    <a href="/cart" className="link-unstyled">
+                        <ShoppingCart />
+                    </a>
+                </div>
+            </nav>
 
-        <nav class="nav-categorias">
-            <a onclick="filtrarPorCategoria('perro')">Perro</a>
-            <a onclick="filtrarPorCategoria('gato')">Gato</a>
-            <a onclick="filtrarPorCategoria('conejo')">Conejo</a>
-        </nav>
-      </header>
+            <nav className="nav-categorias">
+                <a onClick={() => filtrarPorCategoria('perro')}>Perro</a>
+                <a onClick={() => filtrarPorCategoria('gato')}>Gato</a>
+                <a onClick={() => filtrarPorCategoria('conejo')}>Conejo</a>
+            </nav>
+        </header>
     );
-  }
-  
-  export default Header;
+}
+
+export default Header;
