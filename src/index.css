@@ -301,6 +301,21 @@ header {
 }
 
 /* productos de la tienda */
+
+.main-index {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 20px;
+    padding: 20px 10px 0 10px;
+}
+
+.producto__titulo {
+    font-size: 20px;
+    margin: 10px 0px;
+    font-weight: 600;
+    text-align: center;
+}
+
 .producto {
     margin: 10px;
     padding: 10px;
@@ -308,7 +323,8 @@ header {
     border-radius: 10px; /* Esquinas redondeadas */
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra para darle un efecto flotante */
     transition: transform 0.3s ease, box-shadow 0.3s ease; /* Transición para efecto de hover */
-  }
+    max-height: 450px;
+}
   
   .producto:hover {
     transform: scale(1.0005); /* Escala el producto al hacer hover */
@@ -640,7 +656,6 @@ header {
     }
 }
 
-
 /*FOOTER*/
 .footer {
   background-color: var(--footer);
@@ -704,3 +719,4 @@ header {
     cursor: pointer;
   }
   
+

@@ -5,7 +5,7 @@ import { Search, User, ShoppingCart } from 'lucide-react';
 function Header() {
     const filtrarPorCategoria = (categoria) => {
         console.log(`Filtrando por categoría: ${categoria}`);
-      };
+    };
     return (
         <header>
             <nav className="nav-principal">

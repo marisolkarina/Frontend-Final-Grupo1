@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 function Footer() {
     return (
-        <footer>
+        <footer className='footer'>
             <div>
                 <p>Av. Brasil 210, Breña</p>
                 <p>Horario de atención: Lunes a Sábado de 9:00 am a 7:30 pm</p>
