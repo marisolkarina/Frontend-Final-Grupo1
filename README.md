@@ -2,5 +2,5 @@
 ## Grupo 1
 #### Pachauri Rivera, Marisol Karina
 #### Soto Galvez, Christian Noe
-#### Flores Vara, Alexia Noemi
+#### Flores Vara, Alexia Naomi
 #### Espinoza Romero, Anthony Jesus
