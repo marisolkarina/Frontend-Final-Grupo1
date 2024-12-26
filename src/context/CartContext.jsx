@@ -1,33 +1,5 @@
 import React, { createContext, useContext, useState } from 'react';
 
-// const Product = {
-//     id: "",
-//     name: "",
-//     price: 0,
-//     description: "",
-//     image: "",
-//     category: "",
-// }
-
-// const CartItem = {
-//     id: "",
-//     name: "",
-//     price: 0,
-//     description: "",
-//     image: "",
-//     category: "",
-//     quantity: 0,
-// }
-
-// const CartContextType = {
-//   items: [CartItem],
-//   addToCart: (product) => {},
-//   removeFromCart: (productId) => {},
-//   updateQuantity: (productId, quantity) => {},
-//   clearCart: () => {},
-//   total: number,
-// }
-
 const CartContext = createContext();
 
 export function CartProvider({ children }) {
@@ -64,8 +36,7 @@ export function CartProvider({ children }) {
   };
 
   const total = items.reduce(
-    (sum, item) => sum + item.price * item.quantity,
-    0
+    (sum, item) => sum + item.precio * item.quantity,0
   );
 
   return (

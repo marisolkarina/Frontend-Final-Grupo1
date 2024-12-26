@@ -755,7 +755,7 @@ header {
     font-size: large;
     cursor: pointer;
 }
-
+.carrito__actualizar { display: flex; }
 .carrito__actualizar button,
 .carrito__confirmar button {
     background-color: var(--btn);
@@ -769,12 +769,12 @@ header {
 .carrito__actualizar button:hover {
     background-color: var(--btn-hover);
 }
-.carrito__actualizar input {
-    padding: 8px;
+.carrito__actualizar span {
+    padding: 10px;
     border: 1px solid var(--gray);
     border-radius: 5px;
-    width: 25%;
     text-align: center;
+    margin: 0 5px;
 }
 
 .main-carrito h3 {
@@ -832,4 +832,20 @@ header {
         margin: 0 80px;
     }
 
+    .carrito__actualizar {
+        flex-direction: column;
+    }
+    .carrito__actualizar span {
+        margin: 5px 0;
+    }
+}
+
+@media (min-width: 1200px) {
+    .carrito__actualizar {
+        flex-direction: row;
+        justify-content: center;
+    }
+    .carrito__actualizar span {
+        margin: 0 5px;
+    }
 }

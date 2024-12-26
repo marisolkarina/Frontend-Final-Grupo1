@@ -1,10 +1,10 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { useCart } from '../context/CartContext';
-import { Trash2 } from 'lucide-react';
+import { Trash2, Minus, Plus } from 'lucide-react';
 
 function Cart() {
-    const { items } = useCart();
+    const { items, removeFromCart, updateQuantity, total } = useCart();
 
     if (items.length === 0) {
         return (
@@ -24,7 +24,7 @@ function Cart() {
                 <form method="">
                     <button type="submit">Confirmar pedido</button>
                 </form>
-                <h4>Total: S/. <span id="total"></span> </h4>
+                <h4>Total: S/. <span id="total">{total.toFixed(2)}</span> </h4>
             </div>
 
             <table>
@@ -45,7 +45,7 @@ function Cart() {
                         <tr id={`prod${item.id}`}>
                             <td>
                                 <div class="carrito__eliminar">
-                                    <button type="submit" ><Trash2 className="trash-2" /></button>
+                                    <button type="submit" onClick={() => removeFromCart(item.id)}><Trash2 className="trash-2" /></button>
                                 </div>
                             </td>
                             <td>
@@ -58,12 +58,17 @@ function Cart() {
                             <td>{item.categoria}</td>
                             <td>
                                 <div class="carrito__actualizar">
-                                    <input type="number" name="cantidad" value={item.quantity} id={`cantNueva${item.id}`}  min="1" />
-                                    <button type="submit" >Actualizar</button>
+                                    <button onClick={() => updateQuantity(item.id, Math.max(0, item.quantity - 1))} >
+                                        <Minus size={16} />
+                                    </button>
+                                    <span>{item.quantity}</span>
+                                    <button onClick={() => updateQuantity(item.id, item.quantity + 1)} >
+                                        <Plus size={16} />
+                                    </button>
                                 </div>
                             </td>
-                            <td>S/. {item.precio} </td>
-                            <td>S/. {item.precio * item.cantidad} </td>
+                            <td>S/. {item.precio.toFixed(2)} </td>
+                            <td>S/. {(item.precio * item.quantity).toFixed(2)} </td>
                         </tr>
                     ))}
                 </tbody>
