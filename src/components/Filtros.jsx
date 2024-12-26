@@ -1,7 +1,17 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 
-function Filtros({setTipoOrden}) {
+function Filtros({setTipoOrden, setPrecioMin, setPrecioMax}) {
+
+    const [minInput, setMinInput] = useState("");
+    const [maxInput, setMaxInput] = useState("");
+
+    const filtrarPorPrecio = () => {
+        const min = parseFloat(minInput) || 0;
+        const max = parseFloat(maxInput) || Infinity;
+        setPrecioMin(min);
+        setPrecioMax(max);
+    }
 
     return (
         <aside className= "filtros">
@@ -29,14 +39,14 @@ function Filtros({setTipoOrden}) {
                 <div className="filtros__precio--minmax">
                     <div>
                         <label for="min">Mín</label>
-                        <input type="number" name="precio" />
+                        <input type="number" name="precio" onChange={(e) => setMinInput(e.target.value)}/>
                     </div>
                     <div>
                         <label for="max">Max</label>
-                        <input type="number" name="precio" />
+                        <input type="number" name="precio" onChange={(e) => setMaxInput(e.target.value)}/>
                     </div>
                 </div>
-                <button onClick="filtrarPorPrecio()">Filtrar</button>
+                <button onClick={filtrarPorPrecio}>Filtrar</button>
             </div>
 
             <div className="filtros__color">

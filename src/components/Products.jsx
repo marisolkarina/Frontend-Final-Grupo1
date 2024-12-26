@@ -52,6 +52,8 @@ const productos = [
 
 function Products() {
     const [tipoOrden, setTipoOrden] = useState("");
+    const [precioMin, setPrecioMin] = useState(0);
+    const [precioMax, setPrecioMax] = useState(Infinity);
     const { tipoFiltro } = useParams();
 
     const productosFinales = useMemo(() => {
@@ -74,12 +76,16 @@ function Products() {
             productosFiltrados = [...productosFiltrados].sort((a, b) => b.precio - a.precio);
         }
 
+        productosFiltrados = productosFiltrados.filter(
+            (producto) => producto.precio >= precioMin && producto.precio <= precioMax
+        );
+
         return productosFiltrados;
-    }, [tipoFiltro, tipoOrden]);
+    }, [tipoFiltro, tipoOrden, precioMin, precioMax]);
 
     return (
         <div className="grid-container-index">
-            <Filtros setTipoOrden={setTipoOrden} />
+            <Filtros setTipoOrden={setTipoOrden} setPrecioMin={setPrecioMin} setPrecioMax={setPrecioMax}/>
             <main className="main-index" id="misProductos">
                 {productosFinales.length === 0 ? (
                     
