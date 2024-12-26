@@ -54,7 +54,7 @@ function Products() {
     const [tipoOrden, setTipoOrden] = useState("");
     const [precioMin, setPrecioMin] = useState(0);
     const [precioMax, setPrecioMax] = useState(Infinity);
-    const { tipoFiltro } = useParams();
+    const { tipoFiltro, palabra } = useParams();
 
     const productosFinales = useMemo(() => {
         //por categoria o color
@@ -80,8 +80,16 @@ function Products() {
             (producto) => producto.precio >= precioMin && producto.precio <= precioMax
         );
 
+        // busqueda por palabra en nombre o descripcion del producto
+        if (palabra) {
+            productosFiltrados = productos.filter(prod =>
+                prod.nombre.toLowerCase().includes(palabra.toLowerCase()) ||
+                prod.descripcion.toLowerCase().includes(palabra.toLowerCase())
+            );
+        }
+
         return productosFiltrados;
-    }, [tipoFiltro, tipoOrden, precioMin, precioMax]);
+    }, [tipoFiltro, tipoOrden, precioMin, precioMax, palabra]);
 
     return (
         <div className="grid-container-index">

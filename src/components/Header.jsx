@@ -1,8 +1,10 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Search, User, ShoppingCart } from 'lucide-react';
 
 function Header() {
+
+    const [palabra, setPalabra] = useState('');
 
     return (
         <header>
@@ -11,8 +13,9 @@ function Header() {
                 <Link className='logo' to="/">PetShop</Link>
 
                 <form>
-                    <input placeholder="Buscar" id="textoIngresado" />
-                    <button type="submit"><Search className="search-icon" /></button>
+                    <input placeholder="Buscar" id="textoIngresado" onChange={(e)=>setPalabra(e.target.value)}/>
+                    {/* <button type="submit"><Search className="search-icon" /></button> */}
+                    <Link to={`/productos-buscados/${palabra}`}><Search className="search-icon" /></Link>
                 </form>
 
                 <div className="nav-secundario__iconos">
