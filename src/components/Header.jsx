@@ -8,15 +8,11 @@ function Header() {
     };
     return (
         <header>
-            <nav className="nav-principal">
-                <a to="/">Inicio</a>
-                <a to="/">Productos</a>
-            </nav>
 
             <nav className="nav-secundario">
-                <a className='logo' href="/">PetShop</a>
+                <Link className='logo' to="/">PetShop</Link>
 
-                <form onsubmit="">
+                <form onSubmit="">
                     <input placeholder="Buscar" id="textoIngresado" />
                     <button type="submit"><Search className="search-icon" /></button>
                 </form>
@@ -25,13 +21,14 @@ function Header() {
                     <Link to="/login" className="link-unstyled">
                         <User />
                     </Link>
-                    <a href="/cart" className="link-unstyled">
+                    <Link to="/cart" className="link-unstyled">
                         <ShoppingCart />
-                    </a>
+                    </Link>
                 </div>
             </nav>
 
-            <nav className="nav-categorias">
+            <nav className="nav-principal">
+                <Link to="/">Inicio</Link>
                 <a onClick={() => filtrarPorCategoria('perro')}>Perro</a>
                 <a onClick={() => filtrarPorCategoria('gato')}>Gato</a>
                 <a onClick={() => filtrarPorCategoria('conejo')}>Conejo</a>
