@@ -3,16 +3,14 @@ import { Link } from 'react-router-dom';
 import { Search, User, ShoppingCart } from 'lucide-react';
 
 function Header() {
-    const filtrarPorCategoria = (categoria) => {
-        console.log(`Filtrando por categoría: ${categoria}`);
-    };
+
     return (
         <header>
 
             <nav className="nav-secundario">
                 <Link className='logo' to="/">PetShop</Link>
 
-                <form onSubmit="">
+                <form>
                     <input placeholder="Buscar" id="textoIngresado" />
                     <button type="submit"><Search className="search-icon" /></button>
                 </form>
@@ -29,9 +27,9 @@ function Header() {
 
             <nav className="nav-principal">
                 <Link to="/">Inicio</Link>
-                <a onClick={() => filtrarPorCategoria('perro')}>Perro</a>
-                <a onClick={() => filtrarPorCategoria('gato')}>Gato</a>
-                <a onClick={() => filtrarPorCategoria('conejo')}>Conejo</a>
+                <Link to="/productos/perro">Perro</Link>
+                <Link to="/productos/gato">Gato</Link>
+                <Link to="/productos/conejo">Conejo</Link>
             </nav>
         </header>
     );

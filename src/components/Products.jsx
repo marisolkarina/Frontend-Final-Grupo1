@@ -1,4 +1,5 @@
 import React, { useMemo, useState } from 'react';
+import { useParams } from 'react-router-dom';
 import Filtros from './Filtros';
 
 const productos = [
@@ -50,23 +51,26 @@ const productos = [
 ]
 
 function Products() {
+    const { categoria } = useParams();
 
-    const [categoria, setCategoria] = useState('');
-    const productosFiltrados = productos;
-    // const productosFiltrados = useMemo(() => {
-    //     return productos.filter(producto => {
-    //         producto.categoria.toLocaleLowerCase() === categoria.toLocaleLowerCase()
-    //     })
-    // }, [categoria]);
+    const productosFiltrados = useMemo(() => {
+        if (!categoria) {
+            return productos;
+        }
+        return productos.filter((producto) => 
+            producto.categoria.toLowerCase() === categoria.toLowerCase()
+        )
+    }, [categoria]);
 
     return (
         <div className="grid-container-index">
             <Filtros />
             <main className="main-index" id="misProductos">
-                {/* {productosFiltrados.length === 0 ? (
-                    <p>No hay productos</p>
-                ) : ( */}
-                    {productosFiltrados.map(producto => (
+                {productosFiltrados.length === 0 ? (
+                    
+                    <p>No hay productos de ese tipo.</p>
+                ) : (
+                    productosFiltrados.map(producto => (
 
                         <div key={producto.id} className="producto">
                             <figure>
@@ -80,14 +84,12 @@ function Products() {
                                 <p>{producto.descripcion}</p>
                             </div>
                             <div className="producto__carrito">
-                                <input type="number" min="1" step="1" id="cantidad${key}" value="1"/>
-                                <button type="submit" onClick='agregarMiProducto(${producto.id})'>Agregar producto</button>
+                                <input type="number" min="1" step="1" id={`cantidad${producto.id}`} value="1"/>
+                                <button type="submit" onClick={() => agregarMiProducto(producto.id)}>Agregar producto</button>
                             </div>
                         </div>
-
-
-                    ))}
-                {/* )} */}
+                    ))
+                )}
                 
 
             </main>

@@ -12,10 +12,10 @@ function Footer() {
                 <p>Teléfono: 920 000 965</p>
                 <p>Correo: ventas@petshop.pe</p>
             </div>
-            <div class="footer__redes">
-                <a href=""><i class="bi bi-facebook"></i></a>
-                <a href=""><i class="bi bi-whatsapp"></i></a>
-                <a href=""><i class="bi bi-instagram"></i></a>
+            <div className="footer__redes">
+                <a href=""><i className="bi bi-facebook"></i></a>
+                <a href=""><i className="bi bi-whatsapp"></i></a>
+                <a href=""><i className="bi bi-instagram"></i></a>
             </div>
         </footer>
     )

@@ -359,19 +359,25 @@ header {
   
 
 @media (min-width: 768px) {
-  .main-index {
-      grid-template-columns: 1fr 1fr;
-      gap: 20px;
-      padding: 20px 20px 0 10px;
-  }
+    .producto {
+        max-height: 500px;
+    }
+    .main-index {
+        grid-template-columns: 1fr 1fr;
+        gap: 20px;
+        padding: 20px 20px 0 10px;
+    }
 }
 
 @media (min-width: 1200px) {
-  .main-index {
-      grid-template-columns: 1fr 1fr 1fr;
-      gap: 20px;
-      padding: 20px 20px 0 20px;
-  }
+    .producto {
+        max-height: 500px;
+    }
+    .main-index {
+        grid-template-columns: 1fr 1fr 1fr;
+        gap: 20px;
+        padding: 20px 20px 0 20px;
+    }
 }
 
 
