@@ -1,11 +1,14 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-function Filtros() {
+function Filtros({setTipoOrden}) {
 
     return (
         <aside className= "filtros">
-            <select id="ordenar" className="filtros__orden">
+            <select id="ordenar"
+                className="filtros__orden"
+                onChange={(e) => setTipoOrden(e.target.value)}
+            >
                 <option>Seleccione orden</option>
                 <option value="1">Ordenar alfabeticamente</option>
                 <option value="2">Ordenar por precio de menor a mayor</option>

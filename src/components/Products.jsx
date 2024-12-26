@@ -51,27 +51,41 @@ const productos = [
 ]
 
 function Products() {
+    const [tipoOrden, setTipoOrden] = useState("");
     const { tipoFiltro } = useParams();
 
-    const productosFiltrados = useMemo(() => { //por categoria o color
-        if (!tipoFiltro) {
-            return productos;
+    const productosFinales = useMemo(() => {
+        //por categoria o color
+        let productosFiltrados = productos;
+        if (tipoFiltro) {
+            productosFiltrados = productosFiltrados.filter( producto =>
+                producto.categoria.toLowerCase() === tipoFiltro.toLowerCase() ||
+                producto.color.toLowerCase() === tipoFiltro.toLowerCase()
+            )
         }
-        return productos.filter((producto) =>
-            producto.categoria.toLowerCase() === tipoFiltro.toLowerCase() ||
-            producto.color.toLowerCase() === tipoFiltro.toLowerCase()
-        )
-    }, [tipoFiltro]);
+
+        if (tipoOrden === "1") { //alfabetico
+            productosFiltrados = [...productosFiltrados].sort((a, b) => a.nombre.localeCompare(b.nombre));
+        }
+        if (tipoOrden === "2") { // precio ascendente
+            productosFiltrados = [...productosFiltrados].sort((a, b) => a.precio - b.precio);
+        }
+        if (tipoOrden === "3") { // precio descendente
+            productosFiltrados = [...productosFiltrados].sort((a, b) => b.precio - a.precio);
+        }
+
+        return productosFiltrados;
+    }, [tipoFiltro, tipoOrden]);
 
     return (
         <div className="grid-container-index">
-            <Filtros />
+            <Filtros setTipoOrden={setTipoOrden} />
             <main className="main-index" id="misProductos">
-                {productosFiltrados.length === 0 ? (
+                {productosFinales.length === 0 ? (
                     
                     <p>No hay productos de ese tipo.</p>
                 ) : (
-                    productosFiltrados.map(producto => (
+                    productosFinales.map(producto => (
 
                         <div key={producto.id} className="producto">
                             <figure>
