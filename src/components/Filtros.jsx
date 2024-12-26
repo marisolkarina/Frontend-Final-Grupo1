@@ -39,11 +39,11 @@ function Filtros() {
             <div className="filtros__color">
                 <p>Filtrar por color</p>
                 <ul>
-                    <li><a onClick="filtrarPorColor('rojo')">Rojo</a></li>
-                    <li><a onClick="filtrarPorColor('azul')">Azul</a></li>
-                    <li><a onClick="filtrarPorColor('celeste')">Celeste</a></li>
-                    <li><a onClick="filtrarPorColor('blanco')">Blanco</a></li>
-                    <li><a onClick="filtrarPorColor('marron')">Marron</a></li>
+                    <li><Link to="/productos/rojo">Rojo</Link></li>
+                    <li><Link to="/productos/azul">Azul</Link></li>
+                    <li><Link to="/productos/celeste">Celeste</Link></li>
+                    <li><Link to="/productos/blanco">Blanco</Link></li>
+                    <li><Link to="/productos/marron">Marron</Link></li>
                 </ul>
             </div>
 

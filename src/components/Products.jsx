@@ -51,16 +51,17 @@ const productos = [
 ]
 
 function Products() {
-    const { categoria } = useParams();
+    const { tipoFiltro } = useParams();
 
-    const productosFiltrados = useMemo(() => {
-        if (!categoria) {
+    const productosFiltrados = useMemo(() => { //por categoria o color
+        if (!tipoFiltro) {
             return productos;
         }
-        return productos.filter((producto) => 
-            producto.categoria.toLowerCase() === categoria.toLowerCase()
+        return productos.filter((producto) =>
+            producto.categoria.toLowerCase() === tipoFiltro.toLowerCase() ||
+            producto.color.toLowerCase() === tipoFiltro.toLowerCase()
         )
-    }, [categoria]);
+    }, [tipoFiltro]);
 
     return (
         <div className="grid-container-index">
