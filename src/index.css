@@ -706,3 +706,130 @@ header {
   }
   
 
+
+/* ---------------------------
+   Estilos para CARRITO
+--------------------------- */
+.grid-container-carrito {
+    display: grid;
+    grid-template-areas:
+    'header'
+    'carrito'
+    'footer';
+}
+.header { grid-area: header; }
+.main-carrito { grid-area: carrito;}
+.footer { grid-area: footer; }
+
+.main-carrito {
+    display: flex;
+    flex-direction: column;
+}
+.main-carrito table { margin-top: 20px; }
+.main-carrito table thead {
+    display: none;
+}
+.main-carrito table tbody tr {
+    display: flex;
+    flex-direction: column;
+    border-top: 1px solid var(--gray);
+    margin-bottom: 15px;
+    padding: 10px;
+}
+.main-carrito table tbody td {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 5px 0;
+}
+.main-carrito table tbody td img {
+    width: 50%;
+}
+.main-carrito form {
+    text-align: center;
+}
+
+.carrito__eliminar button {
+    background-color: var(--white);
+    border: none;
+    font-size: large;
+    cursor: pointer;
+}
+
+.carrito__actualizar button,
+.carrito__confirmar button {
+    background-color: var(--btn);
+    border: none;
+    padding: 8px;
+    border-radius: 5px;
+    color: var(--white);
+    cursor: pointer;
+    transition-duration: 0.8s;
+}
+.carrito__actualizar button:hover {
+    background-color: var(--btn-hover);
+}
+.carrito__actualizar input {
+    padding: 8px;
+    border: 1px solid var(--gray);
+    border-radius: 5px;
+    width: 25%;
+    text-align: center;
+}
+
+.main-carrito h3 {
+    text-align: center;
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+
+.main-carrito div {
+    text-align: center;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+.carrito__continuar a {
+    text-decoration: none;
+    background-color: var(--gray);
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+    color: var(--white);
+    cursor: pointer;
+    transition-duration: 0.8s;
+    display: inline-block;
+}
+
+@media (min-width: 768px) {
+    .main-carrito table {
+        display: table;
+        margin: 0 80px;
+        border-collapse: collapse;
+    }
+    .main-carrito table thead {
+        display: table-header-group;
+    }
+    .main-carrito table tbody tr {
+        display: table-row;
+        margin: 0;
+        border: none;
+        padding: 0;
+    }
+    .main-carrito table tbody td {
+        display: table-cell;
+        padding: 20px 10px;
+        text-align: center;
+        border-top: 2px solid var(--gray);
+    }
+    .main-carrito table tbody td img {
+        width: 200px;
+    }
+
+    .carrito__confirmar {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-end;
+        margin: 0 80px;
+    }
+
+}

@@ -1,6 +1,7 @@
 import React, { useMemo, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import Filtros from './Filtros';
+import { useCart } from '../context/CartContext';
 
 const productos = [
     {
@@ -54,7 +55,9 @@ function Products() {
     const [tipoOrden, setTipoOrden] = useState("");
     const [precioMin, setPrecioMin] = useState(0);
     const [precioMax, setPrecioMax] = useState(Infinity);
+    const [cantidadInput, setCantidadInput] = useState(1);
     const { tipoFiltro, palabra } = useParams();
+    const { addToCart } = useCart();
 
     const productosFinales = useMemo(() => {
         //por categoria o color
@@ -113,8 +116,9 @@ function Products() {
                                 <p>{producto.descripcion}</p>
                             </div>
                             <div className="producto__carrito">
-                                <input type="number" min="1" step="1" id={`cantidad${producto.id}`} value="1"/>
-                                <button type="submit" onClick={() => agregarMiProducto(producto.id)}>Agregar producto</button>
+                                <input type="number" min="1" step="1" id={`cantidad${producto.id}`} value="1" 
+                                    onChange={(e)=>setCantidadInput(e.target.value)}/>
+                                <button type="submit" onClick={() => addToCart(producto, cantidadInput)}>Agregar producto</button>
                             </div>
                         </div>
                     ))

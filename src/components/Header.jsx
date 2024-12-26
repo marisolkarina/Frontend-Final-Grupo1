@@ -14,7 +14,6 @@ function Header() {
 
                 <form>
                     <input placeholder="Buscar" id="textoIngresado" onChange={(e)=>setPalabra(e.target.value)}/>
-                    {/* <button type="submit"><Search className="search-icon" /></button> */}
                     <Link to={`/productos-buscados/${palabra}`}><Search className="search-icon" /></Link>
                 </form>
 

@@ -33,17 +33,17 @@ const CartContext = createContext();
 export function CartProvider({ children }) {
   const [items, setItems] = useState([]);
 
-  const addToCart = (product) => {
+  const addToCart = (product, cantidadInput) => {
     setItems(current => {
       const existingItem = current.find(item => item.id === product.id);
       if (existingItem) {
         return current.map(item =>
           item.id === product.id
-            ? { ...item, quantity: item.quantity + 1 }
+            ? { ...item, quantity: item.quantity + cantidadInput }
             : item
         );
       }
-      return [...current, { ...product, quantity: 1 }];
+      return [...current, { ...product, quantity: cantidadInput }];
     });
   };
 
