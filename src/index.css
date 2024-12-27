@@ -863,3 +863,112 @@ input[type="number"]::-webkit-outer-spin-button {
         margin: 0 5px;
     }
 }
+
+/* ---------------------------
+   Estilos para Confirmar Pedido
+--------------------------- */
+.grid-container-confirmar-pedido {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1rem;
+    padding: 20px;
+}
+
+.main-confirmar-pedido {
+    background-color: #fff;
+    padding: 20px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    display: grid;
+    grid-template-columns: 1fr; /* Por defecto, todas las secciones en una columna (móvil) */
+    gap: 1rem;
+}
+
+/* Estilo de las secciones (información personal, envío, etc.) */
+.main-confirmar-pedido section {
+    border: 1px solid #ddd; /* Borde suave alrededor de cada sección */
+    padding: 20px;
+    border-radius: 8px;
+    background-color: #f9f9f9; /* Color de fondo claro para que se distinga */
+}
+
+/* Estilo para los encabezados de cada sección */
+.main-confirmar-pedido h4 {
+    font-size: 1.25rem;
+    color: var(--black);
+    margin-bottom: 0.75rem;
+}
+
+/* Estilo de los formularios */
+.main-confirmar-pedido form {
+    display: flex;
+    flex-direction: column;
+}
+
+/* Estilo de las etiquetas */
+.main-confirmar-pedido label {
+    margin-bottom: 0.5rem;
+    font-weight: bold;
+}
+
+/* Estilo de los inputs */
+.main-confirmar-pedido input {
+    padding: 0.75rem;
+    margin-bottom: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 1rem;
+    color: var(--black);
+}
+
+/* Estilo de los botones */
+.confirmar button {
+    background-color: var(--btn);
+    color: white;
+    padding: 1rem;
+    border: none;
+    border-radius: 4px;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+/* Hover del botón */
+.confirmar button:hover {
+    background-color: var(--btn-hover);
+}
+
+/* Estilo para la lista del carrito */
+.main-confirmar-pedido ul {
+    list-style: none;
+    padding: 0;
+}
+
+.main-confirmar-pedido ul li {
+    padding: 0.5rem 0;
+    border-bottom: 1px solid #ddd;
+    font-size: 1rem;
+}
+
+/* Estilo de los mensajes de alerta */
+.main-confirmar-pedido p {
+    font-size: 1rem;
+    color: var(--gray);
+}
+
+@media (min-width: 768px) {
+    .main-confirmar-pedido {
+        grid-template-columns: 1fr 1fr; /* Dos columnas para el escritorio */
+        grid-template-rows: auto auto; /* Dos filas para la estructura */
+    }
+
+    /* La primera sección ocupará la primera fila y la segunda y tercera fila ocuparán las filas siguientes */
+    .main-confirmar-pedido > section:nth-child(1) {
+        grid-column: 1 / 3; /* Toma toda la primera fila */
+    }
+
+    .main-confirmar-pedido > section:nth-child(2),
+    .main-confirmar-pedido > section:nth-child(3) {
+        grid-column: span 1; /* Cada sección ocupa una columna */
+    }
+}

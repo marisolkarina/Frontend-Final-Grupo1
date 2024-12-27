@@ -1,11 +1,13 @@
 import React, { useState } from "react";
 import { useCart } from "../context/CartContext";
+import { useNavigate } from "react-router-dom"; // Importamos useNavigate
 
 function ConfirmarPedido() {
     const [datosPersonales, setDatosPersonales] = useState({ nombre: "", apellido: "", dni: "" });
     const [datosEnvio, setDatosEnvio] = useState({ direccion: "", pais: "", region: "", ciudad: "", codigoPostal: "", telefono: "" });
     const [datosPago, setDatosPago] = useState({ numeroTarjeta: "", fechaVencimiento: "", cvv: "", nombreTitular: "", apellidoTitular: "", correo: "" });
-    const { cart, clearCart } = useCart();
+    const { items, clearCart, total } = useCart(); // Cambié cart por items
+    const navigate = useNavigate(); // Hook para navegación
 
     const handleInputChange = (e, setFunction) => {
         const { name, value } = e.target;
@@ -14,13 +16,35 @@ function ConfirmarPedido() {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        console.log("Datos Personales:", datosPersonales);
-        console.log("Datos de Envío:", datosEnvio);
-        console.log("Datos de Pago:", datosPago);
-        console.log("Carrito:", cart);
 
-        alert("¡Pedido confirmado!");
-        clearCart();
+        // Generar un ID único para el pedido
+        const pedidoId = Math.floor(Math.random() * 1000000); // Genera un ID aleatorio
+        const fechaPedido = new Date().toLocaleDateString(); // Fecha de pedido actual
+        const fechaEntrega = new Date(new Date().setDate(new Date().getDate() + 5)).toLocaleDateString(); // Fecha de entrega en 5 días
+
+        // Crear mensaje de confirmación
+        let productosMensaje = "";
+        items.forEach(item => {
+            productosMensaje += `- ${item.nombre}: ${item.quantity}\n`;
+        });
+
+        const mensaje = `
+            ¡Pedido exitoso!
+            Pedido ID: ${pedidoId}
+            Productos:
+            ${productosMensaje}
+            Total: S/. ${total.toFixed(2)}
+            Estado: pendiente
+            Fecha de pedido: ${fechaPedido}
+            Fecha de entrega: ${fechaEntrega}
+        `;
+
+        // Mostrar mensaje de confirmación con la alerta
+        if (window.confirm(mensaje)) {
+            // Si el usuario acepta la alerta, redirigir a la página principal
+            clearCart(); // Limpiar el carrito
+            navigate("/"); // Redirigir a la página principal ("/")
+        }
     };
 
     return (
@@ -28,7 +52,7 @@ function ConfirmarPedido() {
             <main className="main-confirmar-pedido">
                 <section>
                     <h4>Información Personal</h4>
-                    <form>
+                    <form onSubmit={handleSubmit}>
                         <label htmlFor="nombre">Nombre:</label>
                         <input type="text" id="nombre" name="nombre" value={datosPersonales.nombre} onChange={(e) => handleInputChange(e, setDatosPersonales)} required />
 
@@ -38,6 +62,7 @@ function ConfirmarPedido() {
                         <label htmlFor="dni">DNI:</label>
                         <input type="text" id="dni" name="dni" value={datosPersonales.dni} onChange={(e) => handleInputChange(e, setDatosPersonales)} required />
                     </form>
+
                 </section>
 
                 <section>
@@ -88,11 +113,11 @@ function ConfirmarPedido() {
 
                 <section>
                     <h4>Carrito</h4>
-                    {cart && cart.length > 0 ? (
+                    {items && items.length > 0 ? (
                         <ul>
-                            {cart.map((item) => (
+                            {items.map((item) => (
                                 <li key={item.id}>
-                                    {item.nombre} - Cantidad: {item.cantidad} - Precio: S/. {(item.precio * item.cantidad).toFixed(2)}
+                                    {item.nombre} - Cantidad: {item.quantity} - Precio: S/. {(item.precio * item.quantity).toFixed(2)}
                                 </li>
                             ))}
                         </ul>
@@ -100,7 +125,6 @@ function ConfirmarPedido() {
                         <p>El carrito está vacío.</p>
                     )}
                 </section>
-
 
                 <section className="confirmar">
                     <button onClick={handleSubmit}>Confirmar Pedido</button>
