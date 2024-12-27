@@ -339,7 +339,7 @@ header {
     gap: 5px;
   }
   
-  .producto__carrito button {
+  .producto__carrito .agregar {
     background-color: var(--btn);
     border: none;
     padding: 10px;
@@ -347,21 +347,35 @@ header {
     color: var(--white);
     cursor: pointer;
     transition-duration: 0.8s;
-    width: 75%;
+    width: 60%;
+  }
+
+  .producto__carrito .minus,
+  .producto__carrito .plus {
+        background-color: var(--btn);
+        border: none;
+        border-radius: 5px;
+        padding: 10px;
+        color: var(--white);
   }
   
-  .producto__carrito input {
+.producto__carrito input {
     padding: 10px;
     border: 2px var(--gray) solid;
     border-radius: 5px;
-    width: 23%;
+    width: 60px;
     text-align: center;
-  }
-  
+}
+
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
 
 @media (min-width: 768px) {
     .producto {
-        max-height: 500px;
+        max-height: 560px;
     }
     .main-index {
         grid-template-columns: 1fr 1fr;
@@ -372,7 +386,7 @@ header {
 
 @media (min-width: 1200px) {
     .producto {
-        max-height: 500px;
+        max-height: 560px;
     }
     .main-index {
         grid-template-columns: 1fr 1fr 1fr;

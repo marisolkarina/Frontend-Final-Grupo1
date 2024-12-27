@@ -58,7 +58,7 @@ function Cart() {
                             <td>{item.categoria}</td>
                             <td>
                                 <div class="carrito__actualizar">
-                                    <button onClick={() => updateQuantity(item.id, Math.max(0, item.quantity - 1))} >
+                                    <button onClick={() => updateQuantity(item.id, Math.max(1, item.quantity - 1))} >
                                         <Minus size={16} />
                                     </button>
                                     <span>{item.quantity}</span>
