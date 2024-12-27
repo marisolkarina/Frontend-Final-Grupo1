@@ -60,19 +60,6 @@ header {
     color: white;
     padding: 20px;
 }
-.nav-principal {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin: 20px 0px;
-}
-.nav-principal a {
-    text-decoration: none;
-    color: var(--black);
-    font-weight: 600;
-    font-size: 17px;
-    padding: 10px 0px;
-}
 
 .nav-secundario {
     display: flex;
@@ -152,15 +139,15 @@ header {
     height: 40px;
 }
 
-/* Estilos para las categorías */
-.nav-categorias {
+/* Estilos para las categorías: nav-principal */
+.nav-principal {
     background-color: var(--primary);
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
-.nav-categorias a {
+.nav-principal a {
     padding: 10px 0px;
     text-decoration: none;
     color: var(--white);
@@ -171,15 +158,6 @@ header {
 
 /* Media Query para pantallas más grandes */
 @media (min-width: 768px) {
-    .nav-principal {
-        flex-direction: row;
-        padding: 0px 80px;
-        justify-content: flex-end;
-    }
-
-    .nav-principal a {
-        margin-left: 40px;
-    }
 
     .nav-secundario {
         flex-direction: row;
@@ -210,19 +188,19 @@ header {
     }
 
 
-    .nav-categorias {
+    .nav-principal {
         flex-direction: row;
         padding: 0px 80px;
         justify-content: flex-start;
         flex-wrap: wrap;
     }
-    .nav-categorias a { padding-right: 80px; }
+    .nav-principal a { padding-right: 80px; }
 }
 
 /*aside:        */
 .filtros {
     padding-top: 20px;
-    margin: 0px 20px;
+    margin: 0 20px;
 }
 
 .filtros a {
@@ -279,6 +257,7 @@ header {
     .filtros {
         padding: 20px 20px 20px 10px;
         width: 15vw;
+        margin: 0  0 0 20px;
     }
     .filtros__orden {
         padding: 10px;
@@ -323,7 +302,6 @@ header {
     border-radius: 10px; /* Esquinas redondeadas */
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra para darle un efecto flotante */
     transition: transform 0.3s ease, box-shadow 0.3s ease; /* Transición para efecto de hover */
-    max-height: 450px;
 }
   
   .producto:hover {
@@ -357,6 +335,8 @@ header {
   
   .producto__carrito {
     margin: 10px 0px;
+    display: flex;
+    gap: 5px;
   }
   
   .producto__carrito button {
@@ -370,28 +350,35 @@ header {
     width: 75%;
   }
   
-  .producto input {
+  .producto__carrito input {
     padding: 10px;
     border: 2px var(--gray) solid;
     border-radius: 5px;
     width: 23%;
+    text-align: center;
   }
   
 
 @media (min-width: 768px) {
-  .main-index {
-      grid-template-columns: 1fr 1fr;
-      gap: 20px;
-      padding: 20px 20px 0 10px;
-  }
+    .producto {
+        max-height: 500px;
+    }
+    .main-index {
+        grid-template-columns: 1fr 1fr;
+        gap: 20px;
+        padding: 20px 20px 0 10px;
+    }
 }
 
 @media (min-width: 1200px) {
-  .main-index {
-      grid-template-columns: 1fr 1fr 1fr;
-      gap: 20px;
-      padding: 20px 20px 0 20px;
-  }
+    .producto {
+        max-height: 500px;
+    }
+    .main-index {
+        grid-template-columns: 1fr 1fr 1fr;
+        gap: 20px;
+        padding: 20px 20px 0 20px;
+    }
 }
 
 
@@ -658,33 +645,32 @@ header {
 
 /*FOOTER*/
 .footer {
-  background-color: var(--footer);
-  color: var(--white);
-  padding: 10px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+    background-color: var(--footer);
+    color: var(--white);
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 .footer p {
-  text-align: center;
-  padding: 10px;
+    text-align: center;
+    padding: 10px;
 }
 .footer__redes a{
-  font-size: 30px;
-  color: var(--white);
-  margin-left: 20px;
+    font-size: 30px;
+    color: var(--white);
+    margin-left: 20px;
 }
 
 @media (min-width: 768px) {
   .footer {
-      flex-direction: row;
-      justify-content: space-around;
-      align-items: center;
-  }
+        flex-direction: row;
+        justify-content: space-around;
+        align-items: center;
+    }
   .footer p {
-      text-align: left;
-  }
-  
+        text-align: left;
+    }
 }
 
 /*MODAL*/

@@ -1,40 +1,38 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Search, User, ShoppingCart } from 'lucide-react';
 
 function Header() {
-    const filtrarPorCategoria = (categoria) => {
-        console.log(`Filtrando por categoría: ${categoria}`);
-    };
+
+    const [palabra, setPalabra] = useState('');
+
     return (
         <header>
-            <nav className="nav-principal">
-                <a to="/">Inicio</a>
-                <a to="/">Productos</a>
-            </nav>
 
             <nav className="nav-secundario">
-                <a className='logo' href="/">PetShop</a>
+                <Link className='logo' to="/">PetShop</Link>
 
-                <form onsubmit="">
-                    <input placeholder="Buscar" id="textoIngresado" />
-                    <button type="submit"><Search className="search-icon" /></button>
+                <form>
+                    <input placeholder="Buscar" id="textoIngresado" onChange={(e)=>setPalabra(e.target.value)}/>
+                    {/* <button type="submit"><Search className="search-icon" /></button> */}
+                    <Link to={`/productos-buscados/${palabra}`}><Search className="search-icon" /></Link>
                 </form>
 
                 <div className="nav-secundario__iconos">
                     <Link to="/login" className="link-unstyled">
                         <User />
                     </Link>
-                    <a href="/cart" className="link-unstyled">
+                    <Link to="/cart" className="link-unstyled">
                         <ShoppingCart />
-                    </a>
+                    </Link>
                 </div>
             </nav>
 
-            <nav className="nav-categorias">
-                <a onClick={() => filtrarPorCategoria('perro')}>Perro</a>
-                <a onClick={() => filtrarPorCategoria('gato')}>Gato</a>
-                <a onClick={() => filtrarPorCategoria('conejo')}>Conejo</a>
+            <nav className="nav-principal">
+                <Link to="/">Inicio</Link>
+                <Link to="/productos/perro">Perro</Link>
+                <Link to="/productos/gato">Gato</Link>
+                <Link to="/productos/conejo">Conejo</Link>
             </nav>
         </header>
     );
