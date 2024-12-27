@@ -21,9 +21,9 @@ function Cart() {
             <h3>Carrito de compras</h3>
 
             <div class="carrito__confirmar">
-                <form method="">
-                    <button type="submit">Confirmar pedido</button>
-                </form>
+                <Link to="/confirmar-pedido">
+                    <button type="button">Confirmar Pedido</button>
+                </Link>
                 <h4>Total: S/. <span id="total">{total.toFixed(2)}</span> </h4>
             </div>
 
