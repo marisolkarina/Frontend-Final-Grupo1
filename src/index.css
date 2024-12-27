@@ -139,6 +139,11 @@ header {
     height: 40px;
 }
 
+.cart-badge {
+    color: var(--black);
+    font-size: large;
+}
+
 /* Estilos para las categorías: nav-principal */
 .nav-principal {
     background-color: var(--primary);

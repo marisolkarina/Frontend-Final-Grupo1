@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Search, User, ShoppingCart } from 'lucide-react';
+import { useCart } from '../context/CartContext';
 
 function Header() {
 
     const [palabra, setPalabra] = useState('');
+    const { items } = useCart();
 
     return (
         <header>
@@ -24,6 +26,11 @@ function Header() {
                     <Link to="/cart" className="link-unstyled">
                         <ShoppingCart />
                     </Link>
+                    {items.length > 0 && (
+                        <span className="cart-badge">
+                            {items.length}
+                        </span>
+                    )}
                 </div>
             </nav>
 
