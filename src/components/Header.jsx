@@ -21,17 +21,6 @@ function Header() {
             <nav className="nav-secundario">
                 <Link className="logo" to="/">PetShop</Link>
 
-                {/* <form>
-                    <input
-                        placeholder="Buscar"
-                        id="textoIngresado"
-                        onChange={(e) => setHoveredCategory(e.target.value)}
-                    />
-                    <Link to={`/productos-buscados/${hoveredCategory}`}>
-                        <Search className="search-icon" />
-                    </Link>
-                </form> */}
-
                 <form>
                     <input placeholder="Buscar" id="textoIngresado" onChange={(e)=>setPalabra(e.target.value)}/>
                     <Link to={`/productos-buscados/${palabra}`}><Search className="search-icon" /></Link>
@@ -69,15 +58,18 @@ function Header() {
             {/* Estilos en línea opcionales */}
             <style>
                 {`
-                .categoria {
-                    text-decoration: none;
-                    color: black;
-                    transition: color 0.3s ease, text-decoration 0.3s ease;
-                }
-                .categoria.hovered {
-                    color: white;
-                    text-decoration: underline;
-                }
+                    .categoria {
+                        text-decoration: none;
+                        color: black;
+                        font-size: 1rem;
+                        padding: 5px 10px;
+                        transition: all 0.3s ease;
+                    }
+
+                    .categoria:hover {
+                        color: #f1f1f1;
+                        text-decoration: underline;
+                    }
                 `}
             </style>
         </header>
@@ -85,4 +77,3 @@ function Header() {
 }
 
 export default Header;
-
