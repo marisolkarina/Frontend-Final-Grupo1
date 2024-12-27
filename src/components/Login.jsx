@@ -1,6 +1,5 @@
-import React, { useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
-import { useAuth } from '../context/AuthContext';
+import React from 'react';
+import { Link } from 'react-router-dom';
 
 function Login() {
   const loginContainerStyle = {
@@ -8,7 +7,7 @@ function Login() {
     justifyContent: 'center',
     alignItems: 'center',
     height: '100vh',
-    backgroundColor: '#F6F6F6', // Color de fondo neutro
+    backgroundColor: '#F6F6F6',
     fontFamily: "'Poppins', sans-serif",
   };
 
@@ -16,7 +15,7 @@ function Login() {
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
-    flexDirection: 'column', // Apilado para pantallas pequeñas
+    flexDirection: 'column',
     width: '100%',
     maxWidth: '450px',
     gap: '30px',
@@ -27,8 +26,8 @@ function Login() {
     width: '100%',
     padding: '30px',
     borderRadius: '12px',
-    background: '#FFFFFF', // Fondo blanco
-    boxShadow: '0 8px 16px rgba(0, 0, 0, 0.1)', // Sombra suave
+    background: '#FFFFFF',
+    boxShadow: '0 8px 16px rgba(0, 0, 0, 0.1)',
     fontFamily: "'Poppins', sans-serif",
     transition: 'transform 0.3s ease',
   };
@@ -60,12 +59,12 @@ function Login() {
   };
 
   const inputFocusStyle = {
-    borderColor: '#C70039', // Rojo para los inputs cuando están enfocados
+    borderColor: '#C70039',
   };
 
   const buttonStyle = {
     padding: '12px',
-    backgroundColor: '#C70039', // Rojo vibrante
+    backgroundColor: '#C70039',
     color: '#FFFFFF',
     border: 'none',
     borderRadius: '8px',
@@ -75,8 +74,8 @@ function Login() {
   };
 
   const buttonHoverStyle = {
-    backgroundColor: '#A6002D', // Rojo oscuro
-    transform: 'scale(1.05)', // Efecto de aumento al pasar el ratón
+    backgroundColor: '#A6002D',
+    transform: 'scale(1.05)',
   };
 
   const extraStyle = {
@@ -85,27 +84,11 @@ function Login() {
     fontSize: '1rem',
   };
 
-  // Estilos responsivos
-  const responsiveStyles = {
-    '@media (max-width: 768px)': {
-      mainLoginStyle: {
-        gap: '15px',
-        padding: '15px',
-      },
-      sectionStyle: {
-        maxWidth: '90%',
-        marginBottom: '20px',
-      },
-    },
-    '@media (max-width: 480px)': {
-      sectionStyle: {
-        padding: '20px',
-      },
-      buttonStyle: {
-        fontSize: '1rem',
-        padding: '10px',
-      },
-    },
+  const iconStyle = {
+    width: '120px', // Icono más grande
+    height: '120px', // Icono más grande
+    marginBottom: '20px', // Separación con el texto
+    transition: 'transform 0.3s ease',
   };
 
   return (
@@ -113,7 +96,10 @@ function Login() {
       <main style={mainLoginStyle}>
         <section style={sectionStyle}>
           <form style={formStyle} onSubmit="iniciarSesion(event)">
-            <h2 style={{ textAlign: 'center', fontSize: '2.5rem', color: '#C70039', marginBottom: '20px' }}>Acceder</h2>
+            <h2 style={{ textAlign: 'center', fontSize: '2.5rem', color: '#C70039', marginBottom: '20px', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+              <img src="https://img.icons8.com/ios/452/dog.png" alt="Logo perro" style={iconStyle} />
+              Acceder
+            </h2>
 
             <div style={formGroupStyle}>
               <label htmlFor="loginEmail" style={labelStyle}>Dirección de correo</label>
