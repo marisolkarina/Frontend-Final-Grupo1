@@ -8,6 +8,7 @@ import Login from './components/Login';
 import Register from './components/Register';
 import Cart from './components/Cart';
 import ConfirmarPedido from './components/ConfirmarPedido';
+import Order from './components/Order';
 
 function App() {
   return (
@@ -21,12 +22,13 @@ function App() {
               <Route path="/productos-buscados/:palabra" element={<Products />} />
               <Route path="/login" element={<Login />} />
               <Route path="/cart" element={< Cart/>} />
+              <Route path="/order" element={< Order/>} />
               <Route path="/register" element={<Register />} />
               <Route path="/confirmar-pedido" element={<ConfirmarPedido />} />
               <Route path="*" element={<Navigate to="/" />} />
             </Routes>
           <Footer />
-          </CartProvider>
+        </CartProvider>
       </AuthProvider>
     </Router>
   );
