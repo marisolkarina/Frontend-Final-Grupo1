@@ -420,7 +420,7 @@ input[type="number"]::-webkit-outer-spin-button {
 }
 
 .login-section {
-    margin: 40px auto;
+    margin: 70px auto;
     max-width: 400px;
     padding: 20px;
     background-color: var(--white);
@@ -496,7 +496,7 @@ input[type="number"]::-webkit-outer-spin-button {
 
 /* opción de registro en la página de inicio de sesión*/
 .register-section {
-    margin: 40px auto;
+    margin: 70px auto;
     max-width: 400px;
     text-align: center;
     padding: 20px;
