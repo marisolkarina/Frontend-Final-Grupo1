@@ -4,34 +4,79 @@ import { useAuth } from '../context/AuthContext';
 
 function Login() {
 
+    const navigate = useNavigate();
+    const { login } = useAuth();
+    const [formData, setFormData] = useState({
+        email: '',
+        password: ''
+    });
+
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        try {
+          await login(formData.email, formData.password);
+          navigate('/');
+        } catch (error) {
+          alert('Login failed. Please try again.');
+        }
+      };
+    
+    const handleChange = (e) => {
+        setFormData(prev => ({
+            ...prev,
+            [e.target.name]: e.target.value
+        }));
+    };
+
   return (
     <div className="login-container">
-        <main class="main-login">
-      
-            <section class="login-section">
-                <form action="" method="" class="login-form" onsubmit="iniciarSesion(event)">
+        <main className="main-login">
+            <section className="login-section">
+                <form action="" method="" className="login-form" onSubmit={handleSubmit}>
                     <h2>Acceder</h2>
-                    <div class="form-group">
-                        <label for="loginEmail">Dirección de correo</label>
-                        <input type="email" name="loginEmail" id="loginEmail" placeholder="Ingresa tu correo" required/>
+                    <div className="form-group">
+                        <label htmlFor="loginEmail">Dirección de correo</label>
+                        <input
+                            type="email"
+                            name="email"
+                            id="loginEmail"
+                            placeholder="Ingresa tu correo"
+                            value={formData.email}
+                            onChange={handleChange}
+                            required
+                        />
                     </div>
-                    <div class="form-group">
-                        <label for="loginPassword">Contraseña</label>
-                        <input type="password" name="loginPassword" id="loginPassword" placeholder="Ingresa tu contraseña" minlength="6" required />
+                    <div className="form-group">
+                        <label htmlFor="loginPassword">Contraseña</label>
+                        <input
+                            type="password"
+                            name="password"
+                            id="loginPassword"
+                            placeholder="Ingresa tu contraseña"
+                            minLength="6"
+                            value={formData.password} 
+                            onChange={handleChange}
+                            required
+                        />
                     </div>
                     <button type="submit">Iniciar sesión</button>
                 </form>
-                <div class="login-extra">
+                <div className="login-extra">
                     <a href="#">¿Olvidaste tu contraseña?</a>
                 </div>
             </section>
-            <section class="register-section">
+
+            <section className="register-section">
                 <h2>Registrarse</h2>
-                <p>Al registrarte podrás acceder al estado de tus pedidos y tener una experiencia de compra más rápida.</p>
-                <Link to="/register" >Regístrate</Link>
+                <p>
+                    Al registrarte podrás acceder al estado de tus pedidos y tener una experiencia
+                    de compra más rápida.
+                </p>
+                <Link to="/register">Regístrate</Link>
             </section>
         </main>
-    </div>
+        </div>
+
   );
 
   // const loginContainerStyle = {

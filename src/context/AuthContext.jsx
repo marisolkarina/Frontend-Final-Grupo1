@@ -1,18 +1,5 @@
 import React, { createContext, useContext, useState, useEffect } from 'react';
 
-// const User = {
-//   id: "",
-//   email: "",
-//   name: "",
-// }
-
-// const AuthContextType = {
-//   user: User | null,
-//   login: (email, password) => {},
-//   logout: () => {},
-//   isAuthenticated: boolean.
-// }
-
 const AuthContext = createContext();
 
 export function AuthProvider({ children }) {

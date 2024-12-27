@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Search, User, ShoppingCart } from 'lucide-react';
+import { useAuth } from '../context/AuthContext';
 import { useCart } from '../context/CartContext';
 
 function Header() {
+    const { isAuthenticated, logout } = useAuth();
     const [hoveredCategory, setHoveredCategory] = useState(null);
 
     const [palabra, setPalabra] = useState('');
@@ -27,9 +29,15 @@ function Header() {
                 </form>
 
                 <div className="nav-secundario__iconos">
-                    <Link to="/login" className="link-unstyled">
-                        <User />
-                    </Link>
+
+                    {isAuthenticated ? (
+                        <button onClick={logout} className="btn btn-primary">Logout</button>
+                    ) : (
+                        <Link to="/login" className="link-unstyled">
+                            <User />
+                        </Link>
+                    )}
+
                     <Link to="/cart" className="link-unstyled">
                         <ShoppingCart />
                     </Link>
