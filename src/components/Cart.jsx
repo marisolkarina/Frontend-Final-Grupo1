@@ -22,7 +22,7 @@ function Cart() {
 
             <div class="carrito__confirmar">
                 <form method="">
-                    <button type="submit">Confirmar pedido</button>
+                    <Link to="/order">Confirmar pedido</Link>
                 </form>
                 <h4>Total: S/. <span id="total">{total.toFixed(2)}</span> </h4>
             </div>

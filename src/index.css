@@ -153,12 +153,15 @@ header {
 }
 
 .nav-principal a {
-    padding: 10px 0px;
+    padding: 10px 0;
     text-decoration: none;
     color: var(--white);
     font-size: 17px;
     font-weight: 600;
     cursor: pointer;
+    border: 1px solid var(--btn-2-hover);
+    width: 100%;
+    text-align: center;
 }
 
 /* Media Query para pantallas más grandes */
@@ -199,7 +202,8 @@ header {
         justify-content: flex-start;
         flex-wrap: wrap;
     }
-    .nav-principal a { padding-right: 80px; }
+    .nav-principal a { 
+        padding-right: 80px; border: none; text-align: left; width: auto;}
 }
 
 /*aside:        */
@@ -705,25 +709,34 @@ input[type="number"]::-webkit-outer-spin-button {
     height: 100%;
     background: rgba(0, 0, 0, 0.7); /* Fondo oscuro */
     z-index: 1000;
-  }
-  
-  .modal-content {
+}
+
+.modal-content {
     background-color: white;
     padding: 20px;
     border-radius: 8px;
     width: 300px;
     text-align: center;
     position: relative;
-  }
-  
-  .close {
+}
+
+.modal-content button {
+    background-color: var(--primary);
+    border: none;
+    border-radius: 5px;
+    padding: 10px 30px;
+    margin-top: 10px;
+    color: var(--white);
+    cursor: pointer;
+}
+
+.close {
     position: absolute;
     top: 10px;
     right: 10px;
     font-size: 30px;
     cursor: pointer;
-  }
-  
+}
 
 
 /* ---------------------------
@@ -776,7 +789,7 @@ input[type="number"]::-webkit-outer-spin-button {
 }
 .carrito__actualizar { display: flex; }
 .carrito__actualizar button,
-.carrito__confirmar button {
+.carrito__confirmar a {
     background-color: var(--btn);
     border: none;
     padding: 8px;
@@ -784,6 +797,7 @@ input[type="number"]::-webkit-outer-spin-button {
     color: var(--white);
     cursor: pointer;
     transition-duration: 0.8s;
+    text-decoration: none;
 }
 .carrito__actualizar button:hover {
     background-color: var(--btn-hover);
@@ -867,4 +881,129 @@ input[type="number"]::-webkit-outer-spin-button {
     .carrito__actualizar span {
         margin: 0 5px;
     }
+}
+
+/* ---------------------------
+   Estilos para Finalizar Pedido
+--------------------------- */
+
+.main-pedido { padding: 20px; }
+.main-pedido div div section:first-child { line-height: 30px; }
+.finalizar-pedido section {
+    width: 100%;
+    margin: 20px 0;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+}
+
+.finalizar-pedido h4 {
+    font-size: 22px;
+    margin-bottom: 15px;
+    font-weight: 600;
+    color: var(--black);
+}
+
+.finalizar-pedido form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.finalizar-pedido label {
+    font-size: 16px;
+    color: var(--black);
+    line-height: 30px;
+}
+
+.finalizar-pedido input {
+    padding: 10px;
+    border: 1px solid var(--gray);
+    border-radius: 5px;
+    font-size: 16px;
+    width: 100%;
+}
+
+.finalizar-pedido button {
+    background-color: var(--btn);
+    color: var(--white);
+    padding: 8px 12px;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    max-width: 200px;
+    width: auto;
+    font-size: 16px;
+    font-family: serif;
+}
+
+.finalizar-pedido button:hover {
+    background-color: var(--btn-hover);
+}
+
+.finalizar-pedido .confirmar-pedido {
+    border: none;
+    box-shadow: none;
+    margin-top: 20px;
+    padding: 10px;
+    background: none;
+}
+
+.finalizar-pedido .confirmar-pedido button {
+    background-color: var(--primary);
+    border: none;
+    color: var(--white);
+    padding: 10px 20px;
+    font-size: 20px;
+    border-radius: 5px;
+    width: auto;
+    display: inline-block;
+    margin-top: 20px;
+    font-size: 16px;
+    font-family: serif;
+}
+
+.finalizar-pedido .confirmar-pedido button:hover {
+    background-color: var(--btn-2-hover);
+}
+
+
+.finalizar-pedido .form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.finalizar-pedido .form-group input {
+    width: 100%;
+}
+
+.tarjeta {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.tarjeta img {
+    width: 50px;
+    height: auto;
+}
+
+.envioPago {
+    display: flex;
+    flex-direction: column;
+}
+.confirmar-pedido form {
+    display: flex;
+    align-items: center;
+}
+
+@media (min-width: 768px) {
+    .envioPago {
+        flex-direction: row;
+        gap: 20px;
+    }
+    .main-pedido { padding: 40px; }
 }
