@@ -122,8 +122,8 @@ function Products() {
                             </figure>
                             <div className="producto__caracteristicas">
                                 <p>S/. {producto.precio.toFixed(2)}</p>
-                                <p>Categoría: {producto.categoria}</p>
-                                <p>Color: {producto.color}</p>
+                                <p><strong>Categoría:</strong> {producto.categoria}</p>
+                                <p><strong>Color:</strong> {producto.color}</p>
                                 <p>{producto.descripcion}</p>
                             </div>
                             <div className="producto__carrito">

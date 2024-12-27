@@ -325,7 +325,7 @@ header {
   }
   
   .producto img {
-    width: 200px;
+    width: 250px;
     border-radius: 8px; /* Esquinas redondeadas en la imagen */
   }
   
@@ -340,6 +340,11 @@ header {
   .producto__caracteristicas p:nth-child(1) {
     text-align: center;
     font-size: 20px;
+  }
+
+  .producto__caracteristicas p:nth-child(2),
+  .producto__caracteristicas p:nth-child(3) {
+    font-size: 17px;
   }
   
   .producto__carrito {
@@ -855,7 +860,7 @@ input[type="number"]::-webkit-outer-spin-button {
         border-top: 2px solid var(--gray);
     }
     .main-carrito table tbody td img {
-        width: 200px;
+        width: 150px;
     }
 
     .carrito__confirmar {
@@ -895,6 +900,7 @@ input[type="number"]::-webkit-outer-spin-button {
     padding: 20px;
     border: 1px solid #ccc;
     border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 .finalizar-pedido h4 {
@@ -933,8 +939,6 @@ input[type="number"]::-webkit-outer-spin-button {
     border-radius: 5px;
     cursor: pointer;
     transition: background-color 0.3s ease;
-    max-width: 200px;
-    width: auto;
     font-size: 16px;
     font-family: serif;
 }
@@ -958,7 +962,6 @@ input[type="number"]::-webkit-outer-spin-button {
     padding: 10px 20px;
     font-size: 20px;
     border-radius: 5px;
-    width: auto;
     display: inline-block;
     margin-top: 20px;
     font-size: 16px;
@@ -1006,4 +1009,7 @@ input[type="number"]::-webkit-outer-spin-button {
         gap: 20px;
     }
     .main-pedido { padding: 40px; }
+    .finalizar-pedido button {
+        max-width: 200px;
+    }
 }
