@@ -1,6 +1,9 @@
 import React, { useMemo, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import Filtros from './Filtros';
+import { useCart } from '../context/CartContext';
+import { Minus, Plus } from 'lucide-react';
+
 
 const productos = [
     {
@@ -54,7 +57,16 @@ function Products() {
     const [tipoOrden, setTipoOrden] = useState("");
     const [precioMin, setPrecioMin] = useState(0);
     const [precioMax, setPrecioMax] = useState(Infinity);
+    const [cantidades, setCantidades] = useState({});
     const { tipoFiltro, palabra } = useParams();
+    const { addToCart } = useCart();
+
+    const handleCantidadChange = (id, nuevaCantidad) => {
+        setCantidades((prevCantidades) => ({
+            ...prevCantidades,
+            [id]: Math.max(1, nuevaCantidad),
+        }));
+    };
 
     const productosFinales = useMemo(() => {
         //por categoria o color
@@ -99,8 +111,10 @@ function Products() {
                     
                     <p>No hay productos de ese tipo.</p>
                 ) : (
-                    productosFinales.map(producto => (
+                    productosFinales.map(producto => {
+                    const cantidad = cantidades[producto.id] || 1;
 
+                    return (
                         <div key={producto.id} className="producto">
                             <figure>
                                 <img src={producto.urlImagen} alt={producto.nombre} />
@@ -113,11 +127,24 @@ function Products() {
                                 <p>{producto.descripcion}</p>
                             </div>
                             <div className="producto__carrito">
-                                <input type="number" min="1" step="1" id={`cantidad${producto.id}`} value="1"/>
-                                <button type="submit" onClick={() => agregarMiProducto(producto.id)}>Agregar producto</button>
+                                <button className='minus' onClick={() => handleCantidadChange(producto.id, cantidad - 1)} >
+                                    <Minus size={16} />
+                                </button>
+                                <input type="number" id={`cantidad${producto.id}`} value={cantidad}
+                                    onChange={(e) =>
+                                        handleCantidadChange(
+                                            producto.id,
+                                            parseInt(e.target.value) || 1
+                                        )
+                                    }/>
+                                <button className='plus' onClick={() => handleCantidadChange(producto.id, cantidad + 1)} >
+                                    <Plus size={16} />
+                                </button>
+
+                                <button className='agregar' type="submit" onClick={() => addToCart(producto, parseInt(cantidad))}>Agregar producto</button>
                             </div>
                         </div>
-                    ))
+                    )})
                 )}
                 
 
